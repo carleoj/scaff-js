@@ -12,5 +12,5 @@ switch (command) {
         console.log("Scaffold your UI before you code it.");
         console.log("");
         console.log("Usage:");
-        console.log("  scf init");
+        console.log("scf init");
 }
