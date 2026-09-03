@@ -1,0 +1,34 @@
+{
+  "name": "scaffjs",
+  "version": "0.1.0",
+  "description": "An open-source CLI for interactively scaffolding responsive frontend UI from the terminal.",
+  "type": "module",
+  "bin": {
+    "scf": "./bin/scf.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "cli",
+    "scaffolding",
+    "frontend",
+    "ui",
+    "html",
+    "css",
+    "react"
+  ],
+  "author": "Carl Eoj",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carleoj/scaffjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/carleoj/scaffjs/issues"
+  },
+  "homepage": "https://github.com/carleoj/scaffjs#readme",
+  "engines": {
+    "node": ">=20"
+  }
+}
