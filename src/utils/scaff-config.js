@@ -1,7 +1,19 @@
-import { writeFile } from "node:fs/promises";
+import fs from "node:fs/promises";
+import path from "node:path";
 
-export async function createScaffConfig(config) {
-    const content = JSON.stringify(config, null, 2);
+export async function createScaffConfig(config, projectRoot) {
+  await fs.mkdir(projectRoot, {
+    recursive: true,
+  });
 
-    await writeFile("scaff.json", content + "\n");
+  const configPath = path.join(
+    projectRoot,
+    "scaff.json"
+  );
+
+  await fs.writeFile(
+    configPath,
+    JSON.stringify(config, null, 2),
+    "utf8"
+  );
 }

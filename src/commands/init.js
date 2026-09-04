@@ -1,6 +1,8 @@
 import { confirm, checkbox, select, Separator } from "@inquirer/prompts";
+import path from "node:path";
 
 import { createScaffConfig } from "../utils/scaff-config.js";
+import { generateProject } from "../generators/index.js";
 
 const CANCEL = "__cancel__";
 const EXIT = "__exit__";
@@ -114,7 +116,16 @@ async function configureAdditionalComponents() {
   }));
 }
 
-async function initialize() {
+async function initialize(target = ".") {
+  /*
+   * Resolve the project directory.
+   *
+   * "."              → current directory
+   * "my-project"     → ./my-project
+   * "./projects/app" → ./projects/app
+   */
+  const projectRoot = path.resolve(process.cwd(), target);
+
   // -------------------------
   // Framework
   // -------------------------
@@ -149,7 +160,7 @@ async function initialize() {
 
   const config = {
     framework,
-    styling: "css",
+    styling: "tailwind",
     components: [],
   };
 
@@ -278,12 +289,13 @@ async function initialize() {
   // Create configuration
   // -------------------------
 
-  await createScaffConfig(config);
+  await createScaffConfig(config, projectRoot);
+  await generateProject(config, projectRoot);
 
   console.log("");
   console.log("Scaffolding complete.");
+  console.log(`Project: ${projectRoot}`);
   console.log("Created scaff.json");
 }
 
-await initialize();
-
+await initialize(process.argv[3] ?? ".");

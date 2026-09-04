@@ -1,5 +1,14 @@
 {
   "framework": "plain",
   "styling": "css",
-  "components": []
+  "components": [
+    {
+      "type": "body",
+      "variant": "text"
+    },
+    {
+      "type": "footer",
+      "variant": "copyright"
+    }
+  ]
 }
